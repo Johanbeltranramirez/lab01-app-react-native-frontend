@@ -1,93 +1,71 @@
-import React from 'react'
+import React, { useState } from 'react';
+import { View, Text, StyleSheet, Image, TextInput, ToastAndroid } from
+        'react-native'
 import { useNavigation } from '@react-navigation/native';
-import { View, Text, StyleSheet, Image, TextInput, ToastAndroid, Touchable,
-    TouchableOpacity } from 'react-native';
 import { RoundedButton } from '../../components/RoundedButton';
 import { StackNavigationProp } from '@react-navigation/stack';
-import { RootStackParamList } from '../../../App';
+import { RootStackParamList } from '../../../../App';
 
-export const RegisterScreen = () => {
+
+
+
+export const HomeScreen = () => {
+
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+
+    const navigation = useNavigation<StackNavigationProp<RootStackParamList>>();
+
     return (
         <View style={styles.container}>
             <Image
-                source={require('../../../assets/chef.jpg')}
+                source={require('../../../../assets/chef.jpg')}
                 style={styles.imageBackground}
             />
             <View style={styles.logoContainer}>
                 <Image
-                    source={require('../../../assets/user_image.png')}
+                    source={require('../../../../assets/logo.png')}
                     style={styles.logoImage}
                 />
-                <Text style={styles.logoText}>SELECCIONA UNA IMAGEN</Text>
+                <Text style={styles.logoText}>FOOD APP</Text>
             </View>
             <View style={styles.form}>
-                <Text style={styles.formText}>REGISTRARSE</Text>
+                <Text style={styles.formText}>INGRESAR</Text>
                 <View style={styles.formInput}>
                     <Image style={styles.formIcon}
-                           source={require('../../../assets/user.png')}
-                    />
-                    <TextInput
-                        style={styles.formTextInput}
-                        placeholder='Nombres'
-                        keyboardType='default'
-                    />
-                </View>
-                <View style={styles.formInput}>
-                    <Image style={styles.formIcon}
-                           source={require('../../../assets/my_user.png')}
-                    />
-                    <TextInput
-                        style={styles.formTextInput}
-                        placeholder='Apellidos'
-                        keyboardType='default'
-                    />
-                </View>
-                <View style={styles.formInput}>
-                    <Image style={styles.formIcon}
-                           source={require('../../../assets/email.png')}
+                           source={require('../../../../assets/email.png')}
                     />
                     <TextInput
                         style={styles.formTextInput}
                         placeholder='Correo electrónico'
                         keyboardType='email-address'
+                        value={email}
+                        onChangeText={ text => setEmail(text)}
                     />
                 </View>
                 <View style={styles.formInput}>
                     <Image style={styles.formIcon}
-                           source={require('../../../assets/phone.png')}
-                    />
-                    <TextInput
-                        style={styles.formTextInput}
-                        placeholder='Teléfono'
-                        keyboardType='numeric'
-                    />
-                </View>
-                <View style={styles.formInput}>
-                    <Image style={styles.formIcon}
-                           source={require('../../../assets/password.png')}
+                           source={require('../../../../assets/password.png')}
                     />
                     <TextInput
                         style={styles.formTextInput}
                         placeholder='Contraseña'
                         keyboardType='default'
                         secureTextEntry={true}
-                    />
-                </View>
-
-                <View style={styles.formInput}>
-                    <Image style={styles.formIcon}
-                           source={require('../../../assets/confirm_password.png')}
-                    />
-                    <TextInput
-                        style={styles.formTextInput}
-                        placeholder='Confirmar Contraseña'
-                        keyboardType='default'
-                        secureTextEntry={true}
+                        value={password}
+                        onChangeText={ text => setPassword(text)}
                     />
                 </View>
                 <View style={{ marginTop: 30 }}>
-                    <RoundedButton text='CONFIRMAR' onPress={() =>
-                        ToastAndroid.show('HOLA!', ToastAndroid.SHORT)} />
+                    <RoundedButton text='ENTRAR' onPress={() => {
+                        console.log('Email: ' + email);
+                        console.log('Password ' + password);
+                    }
+                        } />
+                </View>
+                <View style={styles.formRegister}>
+                    <Text>¿No tienes cuenta?</Text>
+                    <Text style={styles.formRegisterText}>Regístrate</Text>
                 </View>
             </View>
         </View>
@@ -99,7 +77,6 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: 'black',
     },
-
     imageBackground: {
         width: '100%',
         height: '100%',
@@ -108,7 +85,7 @@ const styles = StyleSheet.create({
     },
     form: {
         width: '100%',
-        height: '70%',
+        height: '40%',
         backgroundColor: 'white',
         position: 'absolute',
         bottom: 0,
@@ -127,7 +104,7 @@ const styles = StyleSheet.create({
     },
     formInput: {
         flexDirection: 'row',
-        marginTop: 25,
+        marginTop: 30,
     },
     formTextInput: {
         flex: 1,
@@ -151,8 +128,7 @@ const styles = StyleSheet.create({
     logoContainer: {
         position: 'absolute',
         alignSelf: 'center',
-        top: '5%',
-        alignItems: 'center',
+        top: '15%',
     },
     logoImage: {
         width: 100,
