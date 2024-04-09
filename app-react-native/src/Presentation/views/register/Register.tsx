@@ -4,7 +4,7 @@ import { View, Text, StyleSheet, Image, TextInput, ToastAndroid, Touchable,
 import { RoundedButton } from '../../components/RoundedButton';
 import useViewModel from './ViewModel';
 import { CustomTextInput } from '../../components/CustomTextInput';
-import styles from './Styles';
+import styles from "./Styles";
 export const RegisterScreen = () => {
     const { name, lastname, phone, email, password, confirmPassword, onChange, register} = useViewModel();
 
