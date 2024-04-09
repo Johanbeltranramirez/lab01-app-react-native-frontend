@@ -2,8 +2,8 @@ const mysql = require('mysql2');
 const db = mysql.createConnection({
  host: 'localhost',
  user: 'root',
- password: 'JFRB1234',
- database: 'nodejs_base1',
+ password: 'JFRB131415hola',
+ database: 'nodejs_basejohan',
  authPlugins : {
     mysql_clear_password: () => Buffer.from('root','utf-8' ),
     caching_sh2_password : true,
